@@ -32,11 +32,11 @@ output at all for several minutes at N=4096, with the cell showing as still runn
 Nothing printed, nothing errored; it looked identical to a hung/broken cell.
 
 **How I found out:** I compared this against what N=256 and N=1024 took (well under a
-second each), and against the fact that CPU work should scale roughly with N³ — going
+second each), and against the fact that CPU work should scale roughly with N³ which was going
 from 1024 to 4096 is a 64× increase in arithmetic, not the >100× slowdown-to-apparent-hang
 I was seeing. That pointed at the memory-access pattern rather than raw arithmetic volume:
 `B[k*n+j]` with `j` fixed in the innermost loop walks straight down a column of B, jumping
-`n*4` bytes (16 KB at n=4096) between consecutive accesses — a near-guaranteed cache miss
+`n*4` bytes (16 KB at n=4096) between consecutive accesses, a near-guaranteed cache miss
 on almost every read, a well-known worst case for naive triple-loop matrix multiply.
 
 **What I changed and why it works:** Reordered to `i-k-j`, so both B and C are accessed
@@ -59,7 +59,7 @@ seconds total — I verified this by timing the actual run, not by assumption.
 ## 3. Specific incorrect output #2 — PyTorch silently trained on CPU instead of GPU
 
 **What happened:** `train_torch()` builds tensors with `torch.from_numpy(...)` and the
-model with no device argument — there's no `.to('cuda')` or `.cuda()` call anywhere in
+model with no device argument, there's no `.to('cuda')` or `.cuda()` call anywhere in
 the function.
 
 **Wrong output:** Ran the neural-network notebook twice in two different Colab
@@ -86,7 +86,7 @@ should raise suspicion rather than be accepted at face value.
 **What happened:** An earlier draft of `build_tf_model()` used a `sigmoid` activation on
 the output layer paired with `BinaryCrossentropy(from_logits=False)`.
 
-**How I found out:** Not a runtime error — I caught this by re-reading the assignment
+**How I found out:** Not a runtime error, I caught this by re-reading the assignment
 text, which explicitly requires "one raw output logit" and "binary cross-entropy with
 logits" for both frameworks. A sigmoid-activated output with a non-logits loss is
 mathematically similar but is not what was specified, and it made the TensorFlow model
