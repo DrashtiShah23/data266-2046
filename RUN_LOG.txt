@@ -1,0 +1,819 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          (https://docs.nvidia.com/nsight-compute/ProfilingGuide/index.html#metrics-reference) provides more details    
+          (https://docs.nvidia.com/nsight-compute/ProfilingGuide/index.html#metrics-reference) provides more details    
+          (https://docs.nvidia.com/nsight-compute/ProfilingGuide/index.html#roofline) for more details on roofline      
+          (https://docs.nvidia.com/nsight-compute/ProfilingGuide/index.html#roofline) for more details on roofline      
+          7.89 active warps per scheduler, but only an average of 0.81 warps were eligible per cycle. Eligible warps    
+          7.89 active warps per scheduler, but only an average of 0.81 warps were eligible per cycle. Eligible warps    
+          All compute pipelines are under-utilized. Either this workload is very small or it doesn't issue enough warps 
+          All compute pipelines are under-utilized. Either this workload is very small or it doesn't issue enough warps 
+          Check both the Compute Workload Analysis and Memory Workload Analysis sections.                               
+          Check both the Compute Workload Analysis and Memory Workload Analysis sections.                               
+          Check both the Compute Workload Analysis and Memory Workload Analysis sections.                               
+          Check both the Compute Workload Analysis and Memory Workload Analysis sections.                               
+          Every scheduler is capable of issuing one instruction per cycle, but for this workload each scheduler only    
+          Every scheduler is capable of issuing one instruction per cycle, but for this workload each scheduler only    
+          On average, each warp of this workload spends 17.4 cycles being stalled waiting for the MIO (memory           
+          On average, each warp of this workload spends 17.4 cycles being stalled waiting for the MIO (memory           
+          Reducing stalls indicated on the Warp State Statistics and Source Counters sections can help, too.            
+          Reducing stalls indicated on the Warp State Statistics and Source Counters sections can help, too.            
+          analysis.                                                                                                     
+          analysis.                                                                                                     
+          are the subset of active warps that are ready to issue their next instruction. Every cycle with no eligible   
+          are the subset of active warps that are ready to issue their next instruction. Every cycle with no eligible   
+          eligible warps, avoid possible load imbalances due to highly different execution durations per warp.          
+          eligible warps, avoid possible load imbalances due to highly different execution durations per warp.          
+          input/output) instruction queue to be not full. This stall reason is high in cases of extreme utilization of  
+          input/output) instruction queue to be not full. This stall reason is high in cases of extreme utilization of  
+          instructions.                                                                                                 
+          instructions.                                                                                                 
+          instructions. When caused by shared memory accesses, trying to use fewer but wider loads can reduce pipeline  
+          instructions. When caused by shared memory accesses, trying to use fewer but wider loads can reduce pipeline  
+          issues an instruction every 4.0 cycles. This might leave hardware resources underutilized and may lead to     
+          issues an instruction every 4.0 cycles. This might leave hardware resources underutilized and may lead to     
+          less optimal performance. Out of the maximum of 8 warps per scheduler, this workload allocates an average of  
+          less optimal performance. Out of the maximum of 8 warps per scheduler, this workload allocates an average of  
+          of this device's fp32 peak performance and 0% of its fp64 peak performance. See the Kernel Profiling Guide    
+          of this device's fp32 peak performance and 0% of its fp64 peak performance. See the Kernel Profiling Guide    
+          on each stall reason.                                                                                         
+          on each stall reason.                                                                                         
+          per scheduler. Check the Launch Statistics and Scheduler Statistics sections for further details.             
+          per scheduler. Check the Launch Statistics and Scheduler Statistics sections for further details.             
+          pressure. This stall type represents about 55.4% of the total average of 31.4 cycles between issuing two      
+          pressure. This stall type represents about 55.4% of the total average of 31.4 cycles between issuing two      
+          sampling data. The Kernel Profiling Guide                                                                     
+          sampling data. The Kernel Profiling Guide                                                                     
+          the MIO pipelines, which include special math instructions, dynamic branches, as well as shared memory        
+          the MIO pipelines, which include special math instructions, dynamic branches, as well as shared memory        
+          warp results in no instruction being issued and the issue slot remains unused. To increase the number of      
+          warp results in no instruction being issued and the issue slot remains unused. To increase the number of      
+    # Pass Groups                                    1
+    # Pass Groups                                    1
+    # SMs                                         SM              40
+    # SMs                                         SM              40
+    # SMs                                         SM              40
+    # SMs                                         SM              40
+    # TPCs                                                        20
+    # TPCs                                                        20
+    # TPCs                                                        20
+    # TPCs                                                        20
+    ----- --------------------------------------------------------------------------------------------------------------
+    ----- --------------------------------------------------------------------------------------------------------------
+    ----------------- ----------- ------------
+    ----------------- ----------- ------------
+    ----------------- ----------- ------------
+    ----------------- ----------- ------------
+    ----------------- ----------- ------------
+    ----------------- ----------- ------------
+    -------------------- ----------- ------------
+    -------------------- ----------- ------------
+    -------------------- ----------- ------------
+    -------------------- ----------- ------------
+    -------------------- ----------- ------------
+    -------------------- ----------- ------------
+    ----------------------- ----------- ------------
+    ----------------------- ----------- ------------
+    ----------------------- ----------- ------------
+    ----------------------- ----------- ------------
+    ----------------------- ----------- ------------
+    ----------------------- ----------- ------------
+    ----------------------- ----------- ------------
+    ----------------------- ----------- ------------
+    ----------------------- ----------- ------------
+    ----------------------- ----------- ------------
+    ----------------------- ----------- ------------
+    ----------------------- ----------- ------------
+    ------------------------- ----------- ------------
+    ------------------------- ----------- ------------
+    ------------------------- ----------- ------------
+    ------------------------- ----------- ------------
+    ------------------------- ----------- ------------
+    ------------------------- ----------- ------------
+    ------------------------- ----------- ------------
+    ------------------------- ----------- ------------
+    ------------------------- ----------- ------------
+    ------------------------- ----------- ------------
+    ------------------------- ----------- ------------
+    ------------------------- ----------- ------------
+    -------------------------- ----------- ------------
+    -------------------------- ----------- ------------
+    -------------------------- ----------- ------------
+    -------------------------- ----------- ------------
+    -------------------------- ----------- ------------
+    -------------------------- ----------- ------------
+    -------------------------- ----------- ------------
+    -------------------------- ----------- ------------
+    -------------------------- ----------- ------------
+    -------------------------- ----------- ------------
+    -------------------------- ----------- ------------
+    -------------------------- ----------- ------------
+    ---------------------------- ----------- ------------
+    ---------------------------- ----------- ------------
+    ---------------------------- ----------- ------------
+    ---------------------------- ----------- ------------
+    ---------------------------- ----------- ------------
+    ---------------------------- ----------- ------------
+    ------------------------------- ----------- ------------
+    ------------------------------- ----------- ------------
+    ------------------------------- ----------- ------------
+    ------------------------------- ----------- ------------
+    ------------------------------- ----------- ------------
+    ------------------------------- ----------- ------------
+    ------------------------------- ----------- ------------
+    ------------------------------- ----------- ------------
+    ------------------------------- ----------- ------------
+    ------------------------------- ----------- ------------
+    ------------------------------- ----------- ------------
+    ------------------------------- ----------- ------------
+    -------------------------------- --------------- ---------------
+    -------------------------------- --------------- ---------------
+    -------------------------------- --------------- ---------------
+    -------------------------------- --------------- ---------------
+    -------------------------------- --------------- ---------------
+    -------------------------------- --------------- ---------------
+    -------------------------------- --------------- ---------------
+    -------------------------------- --------------- ---------------
+    -------------------------------- --------------- ---------------
+    -------------------------------- --------------- ---------------
+    -------------------------------- --------------- ---------------
+    -------------------------------- --------------- ---------------
+    ---------------------------------------- ----------- ------------
+    ---------------------------------------- ----------- ------------
+    ---------------------------------------- ----------- ------------
+    ---------------------------------------- ----------- ------------
+    ---------------------------------------- ----------- ------------
+    ---------------------------------------- ----------- ------------
+    ---------------------------------------- ----------- ------------
+    ---------------------------------------- ----------- ------------
+    ---------------------------------------- ----------- ------------
+    ---------------------------------------- ----------- ------------
+    ---------------------------------------- ----------- ------------
+    ---------------------------------------- ----------- ------------
+    Achieved Active Warps Per SM           warp        31.57
+    Achieved Active Warps Per SM           warp        31.58
+    Achieved Active Warps Per SM           warp        31.58
+    Achieved Active Warps Per SM           warp        31.58
+    Achieved Occupancy                        %        98.67
+    Achieved Occupancy                        %        98.67
+    Achieved Occupancy                        %        98.68
+    Achieved Occupancy                        %        98.69
+    Active Warps Per Scheduler          warp         7.89
+    Active Warps Per Scheduler          warp         7.89
+    Average DRAM Active Cycles       cycle    3,118,043
+    Average DRAM Active Cycles       cycle 3,101,133.50
+    Average DRAM Active Cycles       cycle 3,109,078.50
+    Average DRAM Active Cycles       cycle 3,117,263.50
+    Average L1 Active Cycles         cycle 3,360,567.73
+    Average L1 Active Cycles         cycle 3,360,907.25
+    Average L1 Active Cycles         cycle 3,361,048.02
+    Average L1 Active Cycles         cycle 3,361,378.62
+    Average L2 Active Cycles         cycle    4,568,495
+    Average L2 Active Cycles         cycle 4,564,305.72
+    Average L2 Active Cycles         cycle 4,568,573.25
+    Average L2 Active Cycles         cycle 4,584,468.34
+    Average SM Active Cycles         cycle 3,360,567.73
+    Average SM Active Cycles         cycle 3,360,907.25
+    Average SM Active Cycles         cycle 3,361,048.02
+    Average SM Active Cycles         cycle 3,361,378.62
+    Average SMSP Active Cycles       cycle 3,360,238.11
+    Average SMSP Active Cycles       cycle 3,360,540.44
+    Average SMSP Active Cycles       cycle 3,360,928.65
+    Average SMSP Active Cycles       cycle 3,361,343.04
+    Avg. Active Threads Per Warp                                   32
+    Avg. Active Threads Per Warp                                   32
+    Avg. Divergent Branches                          0
+    Avg. Divergent Branches                          0
+    Avg. Executed Instructions Per Scheduler        inst   846,028.80
+    Avg. Executed Instructions Per Scheduler        inst   846,028.80
+    Avg. Issued Instructions Per Scheduler          inst   846,075.80
+    Avg. Issued Instructions Per Scheduler          inst   846,075.80
+    Avg. Not Predicated Off Threads Per Warp                    31.98
+    Avg. Not Predicated Off Threads Per Warp                    31.98
+    Block Limit Registers                 block            6
+    Block Limit Registers                 block            6
+    Block Limit Registers                 block            6
+    Block Limit Registers                 block            6
+    Block Limit SM                        block           16
+    Block Limit SM                        block           16
+    Block Limit SM                        block           16
+    Block Limit SM                        block           16
+    Block Limit Shared Mem                block           16
+    Block Limit Shared Mem                block           16
+    Block Limit Shared Mem                block           16
+    Block Limit Shared Mem                block           16
+    Block Limit Warps                     block            4
+    Block Limit Warps                     block            4
+    Block Limit Warps                     block            4
+    Block Limit Warps                     block            4
+    Block Size                                                   256
+    Block Size                                                   256
+    Block Size                                                   256
+    Block Size                                                   256
+    Branch Efficiency                   %          100
+    Branch Efficiency                   %          100
+    Branch Instructions              inst    2,195,456
+    Branch Instructions              inst    2,195,456
+    Branch Instructions Ratio           %         0.02
+    Branch Instructions Ratio           %         0.02
+    Compute (SM) Throughput           %        74.53
+    Compute (SM) Throughput           %        74.58
+    Compute (SM) Throughput           %        74.58
+    Compute (SM) Throughput           %        74.58
+    DRAM Frequency                  Ghz         4.99
+    DRAM Frequency                  Ghz         5.00
+    DRAM Frequency                  Ghz         5.00
+    DRAM Frequency                  Ghz         5.00
+    DRAM Throughput                   %        10.74
+    DRAM Throughput                   %        10.76
+    DRAM Throughput                   %        10.79
+    DRAM Throughput                   %        10.79
+    Driver Shared Memory Per Block        byte/block               0
+    Driver Shared Memory Per Block        byte/block               0
+    Driver Shared Memory Per Block        byte/block               0
+    Driver Shared Memory Per Block        byte/block               0
+    Dropped Samples                sample            0
+    Dropped Samples                sample            0
+    Duration                         ms         5.78
+    Duration                         ms         5.78
+    Duration                         ms         5.78
+    Duration                         ms         5.78
+    Dynamic Shared Memory Per Block       byte/block               0
+    Dynamic Shared Memory Per Block       byte/block               0
+    Dynamic Shared Memory Per Block       byte/block               0
+    Dynamic Shared Memory Per Block       byte/block               0
+    Elapsed Cycles                cycle    3,381,490
+    Elapsed Cycles                cycle    3,382,222
+    Elapsed Cycles                cycle    3,382,425
+    Elapsed Cycles                cycle    3,382,778
+    Eligible Warps Per Scheduler        warp         0.81
+    Eligible Warps Per Scheduler        warp         0.81
+    Enabled TPC IDs                                              all
+    Enabled TPC IDs                                              all
+    Enabled TPC IDs                                              all
+    Enabled TPC IDs                                              all
+    Executed Instructions                           inst  135,364,608
+    Executed Instructions                           inst  135,364,608
+    Executed Ipc Active   inst/cycle         1.01
+    Executed Ipc Active   inst/cycle         1.01
+    Executed Ipc Elapsed  inst/cycle         1.00
+    Executed Ipc Elapsed  inst/cycle         1.00
+    Function Cache Configuration                     CachePreferNone
+    Function Cache Configuration                     CachePreferNone
+    Function Cache Configuration                     CachePreferNone
+    Function Cache Configuration                     CachePreferNone
+    Grid Size                                                  4,096
+    Grid Size                                                  4,096
+    Grid Size                                                  4,096
+    Grid Size                                                  4,096
+    INF   Check the Warp Stall Sampling (All Samples) table for the top stall locations in your source based on         
+    INF   Check the Warp Stall Sampling (All Samples) table for the top stall locations in your source based on         
+    INF   Compute and Memory are well-balanced: To reduce runtime, both computation and memory traffic must be reduced. 
+    INF   Compute and Memory are well-balanced: To reduce runtime, both computation and memory traffic must be reduced. 
+    INF   Compute and Memory are well-balanced: To reduce runtime, both computation and memory traffic must be reduced. 
+    INF   Compute and Memory are well-balanced: To reduce runtime, both computation and memory traffic must be reduced. 
+    INF   The ratio of peak float (fp32) to double (fp64) performance on this device is 32:1. The workload achieved 12% 
+    INF   The ratio of peak float (fp32) to double (fp64) performance on this device is 32:1. The workload achieved 12% 
+    Issue Slots Busy               %        25.17
+    Issue Slots Busy               %        25.17
+    Issued Instructions                             inst  135,372,128
+    Issued Instructions                             inst  135,372,128
+    Issued Ipc Active     inst/cycle         1.01
+    Issued Ipc Active     inst/cycle         1.01
+    Issued Warp Per Scheduler                        0.25
+    Issued Warp Per Scheduler                        0.25
+    L1/TEX Cache Throughput           %        95.51
+    L1/TEX Cache Throughput           %        95.57
+    L1/TEX Cache Throughput           %        95.57
+    L1/TEX Cache Throughput           %        95.57
+    L1/TEX Hit Rate             %         5.97
+    L1/TEX Hit Rate             %         6.04
+    L2 Cache Throughput               %        10.05
+    L2 Cache Throughput               %        10.05
+    L2 Cache Throughput               %        10.06
+    L2 Cache Throughput               %        10.06
+    L2 Hit Rate                 %        80.60
+    L2 Hit Rate                 %        80.60
+    Max Bandwidth               %        74.53
+    Max Bandwidth               %        74.58
+    Maximum Buffer Size             Mbyte         3.15
+    Maximum Buffer Size             Mbyte         3.15
+    Maximum Sampling Interval       cycle       20,000
+    Maximum Sampling Interval       cycle       20,000
+    Mem Busy                    %        47.75
+    Mem Busy                    %        47.78
+    Mem Pipes Busy              %        74.53
+    Mem Pipes Busy              %        74.58
+    Memory Throughput                 %        74.53
+    Memory Throughput                 %        74.58
+    Memory Throughput                 %        74.58
+    Memory Throughput                 %        74.58
+    Memory Throughput     Gbyte/s        34.33
+    Memory Throughput     Gbyte/s        34.52
+    Metric Name                              Metric Unit Metric Value
+    Metric Name                              Metric Unit Metric Value
+    Metric Name                              Metric Unit Metric Value
+    Metric Name                              Metric Unit Metric Value
+    Metric Name                          Metric Unit    Metric Value
+    Metric Name                          Metric Unit    Metric Value
+    Metric Name                          Metric Unit    Metric Value
+    Metric Name                          Metric Unit    Metric Value
+    Metric Name                     Metric Unit Metric Value
+    Metric Name                     Metric Unit Metric Value
+    Metric Name                     Metric Unit Metric Value
+    Metric Name                     Metric Unit Metric Value
+    Metric Name                  Metric Unit Metric Value
+    Metric Name                  Metric Unit Metric Value
+    Metric Name                Metric Unit Metric Value
+    Metric Name                Metric Unit Metric Value
+    Metric Name                Metric Unit Metric Value
+    Metric Name                Metric Unit Metric Value
+    Metric Name               Metric Unit Metric Value
+    Metric Name               Metric Unit Metric Value
+    Metric Name               Metric Unit Metric Value
+    Metric Name               Metric Unit Metric Value
+    Metric Name             Metric Unit Metric Value
+    Metric Name             Metric Unit Metric Value
+    Metric Name             Metric Unit Metric Value
+    Metric Name             Metric Unit Metric Value
+    Metric Name          Metric Unit Metric Value
+    Metric Name          Metric Unit Metric Value
+    Metric Name       Metric Unit Metric Value
+    Metric Name       Metric Unit Metric Value
+    No Eligible                            %        74.83
+    No Eligible                            %        74.83
+    OPT   Est. Local Speedup: 25.42%                                                                                    
+    OPT   Est. Local Speedup: 25.47%                                                                                    
+    OPT   Est. Local Speedup: 82.74%                                                                                    
+    OPT   Est. Local Speedup: 82.75%                                                                                    
+    OPT   Est. Speedup: 25.42%                                                                                          
+    OPT   Est. Speedup: 25.47%                                                                                          
+    One or More Eligible                   %        25.17
+    One or More Eligible                   %        25.17
+    Registers Per Thread             register/thread              40
+    Registers Per Thread             register/thread              40
+    Registers Per Thread             register/thread              40
+    Registers Per Thread             register/thread              40
+    SM Active Cycles              cycle 3,360,567.73
+    SM Active Cycles              cycle 3,360,907.25
+    SM Active Cycles              cycle 3,361,048.02
+    SM Active Cycles              cycle 3,361,378.62
+    SM Busy                        %        27.12
+    SM Busy                        %        27.12
+    SM Frequency                    Mhz       584.99
+    SM Frequency                    Mhz       585.00
+    SM Frequency                    Mhz       585.00
+    SM Frequency                    Mhz       585.00
+    Section: Compute Workload Analysis
+    Section: Compute Workload Analysis
+    Section: GPU Speed Of Light Roofline Chart
+    Section: GPU Speed Of Light Roofline Chart
+    Section: GPU Speed Of Light Throughput
+    Section: GPU Speed Of Light Throughput
+    Section: GPU Speed Of Light Throughput
+    Section: GPU Speed Of Light Throughput
+    Section: GPU and Memory Workload Distribution
+    Section: GPU and Memory Workload Distribution
+    Section: GPU and Memory Workload Distribution
+    Section: GPU and Memory Workload Distribution
+    Section: Instruction Statistics
+    Section: Instruction Statistics
+    Section: Launch Statistics
+    Section: Launch Statistics
+    Section: Launch Statistics
+    Section: Launch Statistics
+    Section: Memory Workload Analysis
+    Section: Memory Workload Analysis
+    Section: Occupancy
+    Section: Occupancy
+    Section: Occupancy
+    Section: Occupancy
+    Section: PM Sampling
+    Section: PM Sampling
+    Section: Scheduler Statistics
+    Section: Scheduler Statistics
+    Section: Source Counters
+    Section: Source Counters
+    Section: Warp State Statistics
+    Section: Warp State Statistics
+    Shared Memory Configuration Size           Kbyte           32.77
+    Shared Memory Configuration Size           Kbyte           32.77
+    Shared Memory Configuration Size           Kbyte           32.77
+    Shared Memory Configuration Size           Kbyte           32.77
+    Stack Size                                                 1,024
+    Stack Size                                                 1,024
+    Stack Size                                                 1,024
+    Stack Size                                                 1,024
+    Static Shared Memory Per Block       Kbyte/block            2.05
+    Static Shared Memory Per Block       Kbyte/block            2.05
+    Static Shared Memory Per Block       Kbyte/block            2.05
+    Static Shared Memory Per Block       Kbyte/block            2.05
+    Theoretical Active Warps per SM        warp           32
+    Theoretical Active Warps per SM        warp           32
+    Theoretical Active Warps per SM        warp           32
+    Theoretical Active Warps per SM        warp           32
+    Theoretical Occupancy                     %          100
+    Theoretical Occupancy                     %          100
+    Theoretical Occupancy                     %          100
+    Theoretical Occupancy                     %          100
+    Threads                                   thread       1,048,576
+    Threads                                   thread       1,048,576
+    Threads                                   thread       1,048,576
+    Threads                                   thread       1,048,576
+    Total DRAM Elapsed Cycles        cycle  231,038,976
+    Total DRAM Elapsed Cycles        cycle  231,075,840
+    Total DRAM Elapsed Cycles        cycle  231,124,992
+    Total DRAM Elapsed Cycles        cycle  231,153,664
+    Total L1 Elapsed Cycles          cycle  135,238,696
+    Total L1 Elapsed Cycles          cycle  135,238,848
+    Total L1 Elapsed Cycles          cycle  135,244,272
+    Total L1 Elapsed Cycles          cycle  135,326,048
+    Total L2 Elapsed Cycles          cycle  158,148,512
+    Total L2 Elapsed Cycles          cycle  158,183,200
+    Total L2 Elapsed Cycles          cycle  158,192,608
+    Total L2 Elapsed Cycles          cycle  158,209,280
+    Total SM Elapsed Cycles          cycle  135,238,696
+    Total SM Elapsed Cycles          cycle  135,238,848
+    Total SM Elapsed Cycles          cycle  135,244,272
+    Total SM Elapsed Cycles          cycle  135,326,048
+    Total SMSP Elapsed Cycles        cycle  540,954,784
+    Total SMSP Elapsed Cycles        cycle  540,955,392
+    Total SMSP Elapsed Cycles        cycle  540,977,088
+    Total SMSP Elapsed Cycles        cycle  541,304,192
+    Uses Green Context                                             0
+    Uses Green Context                                             0
+    Uses Green Context                                             0
+    Uses Green Context                                             0
+    Warp Cycles Per Executed Instruction           cycle        31.36
+    Warp Cycles Per Executed Instruction           cycle        31.36
+    Warp Cycles Per Issued Instruction             cycle        31.35
+    Warp Cycles Per Issued Instruction             cycle        31.36
+    Waves Per SM                                               25.60
+    Waves Per SM                                               25.60
+    Waves Per SM                                               25.60
+    Waves Per SM                                               25.60
+   PyTorch           Baseline                     19                 0.477827             0.385744               0.482908
+   PyTorch           Baseline            0.745614               0.015193
+   PyTorch Modified (HP_ID 0)                     29                 0.499997             0.430384               0.501459
+   PyTorch Modified (HP_ID 0)            0.748538               0.005064
+  PyTorch           Baseline           2046       0.754386
+  PyTorch           Baseline           2047       0.728070
+  PyTorch           Baseline           2048       0.754386
+  PyTorch Modified (HP_ID 0)           2046       0.745614
+  PyTorch Modified (HP_ID 0)           2047       0.745614
+  PyTorch Modified (HP_ID 0)           2048       0.754386
+  Running CPU reference for N=1024 (3 repeats)...
+  Running CPU reference for N=256 (3 repeats)...
+  Running CPU reference for N=4096 (3 repeats)...
+  tiled_matrix_multiply(const float *, const float *, float *, int) (64, 64, 1)x(16, 16, 1), Context 1, Stream 7, Device 0, CC 7.5
+  tiled_matrix_multiply(const float *, const float *, float *, int) (64, 64, 1)x(16, 16, 1), Context 1, Stream 7, Device 0, CC 7.5
+  tiled_matrix_multiply(const float *, const float *, float *, int) (64, 64, 1)x(16, 16, 1), Context 1, Stream 7, Device 0, CC 7.5
+  tiled_matrix_multiply(const float *, const float *, float *, int) (64, 64, 1)x(16, 16, 1), Context 1, Stream 7, Device 0, CC 7.5
+ Framework              Model  Best validation epoch  Minimum validation loss  Final training loss  Final validation loss
+ Framework              Model  Mean test accuracy  Std dev (sample, n=3)
+ Framework              Model  Training seed  Test accuracy
++-----------------------------------------+------------------------+----------------------+
++-----------------------------------------+------------------------+----------------------+
++-----------------------------------------+------------------------+----------------------+
++-----------------------------------------+------------------------+----------------------+
++-----------------------------------------+------------------------+----------------------+
++-----------------------------------------+------------------------+----------------------+
++-----------------------------------------+------------------------+----------------------+
++-----------------------------------------+------------------------+----------------------+
++-----------------------------------------+------------------------+----------------------+
++-----------------------------------------+------------------------+----------------------+
++-----------------------------------------+------------------------+----------------------+
++-----------------------------------------+------------------------+----------------------+
++-----------------------------------------+------------------------+----------------------+
++-----------------------------------------+------------------------+----------------------+
++-----------------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------+
+1024   305.807        4.92151        2.99691        7.91842          38.6197    9.15527e-05   
+256    11.1777        0.101101       0.668067       0.769168         14.5322    2.28882e-05   
+4096   22593.2        244.861        45.4202        290.281          77.832     0.000366211   
+==ERROR== './matrix_mul' does not exist or is not an executable. Please make sure to specify the absolute path to './matrix_mul' if the executable is not in the local directory.
+==ERROR== './matrix_mul' does not exist or is not an executable. Please make sure to specify the absolute path to './matrix_mul' if the executable is not in the local directory.
+==PROF== Connected to process 7739 (/content/matrix_mul)
+==PROF== Connected to process 7811 (/content/matrix_mul)
+==PROF== Disconnected from process 7739
+==PROF== Disconnected from process 7811
+==PROF== Profiling "tiled_matrix_multiply" - 0: 0%....50%....100% - 31 passes
+==PROF== Profiling "tiled_matrix_multiply" - 0: 0%....50%....100% - 9 passes
+==PROF== Profiling "tiled_matrix_multiply" - 1: 0%....50%....100% - 31 passes
+==PROF== Profiling "tiled_matrix_multiply" - 1: 0%....50%....100% - 9 passes
+==PROF== Report: /content/hw1_ncu.ncu-rep
+Block dimensions: 16 x 16 = 256 threads per block
+Block dimensions: 16 x 16 = 256 threads per block
+Block dimensions: 16 x 16 = 256 threads per block
+Build cuda_12.8.r12.8/compiler.35583870_0
+Build cuda_12.8.r12.8/compiler.35583870_0
+Build cuda_12.8.r12.8/compiler.35583870_0
+Build cuda_12.8.r12.8/compiler.35583870_0
+Build cuda_12.8.r12.8/compiler.35583870_0
+Build cuda_12.8.r12.8/compiler.35583870_0
+Build cuda_12.8.r12.8/compiler.35583870_0
+Built on Fri_Feb_21_20:23:50_PST_2025
+Built on Fri_Feb_21_20:23:50_PST_2025
+Built on Fri_Feb_21_20:23:50_PST_2025
+Built on Fri_Feb_21_20:23:50_PST_2025
+Built on Fri_Feb_21_20:23:50_PST_2025
+Built on Fri_Feb_21_20:23:50_PST_2025
+Built on Fri_Feb_21_20:23:50_PST_2025
+Copyright (c) 2005-2025 NVIDIA Corporation
+Copyright (c) 2005-2025 NVIDIA Corporation
+Copyright (c) 2005-2025 NVIDIA Corporation
+Copyright (c) 2005-2025 NVIDIA Corporation
+Copyright (c) 2005-2025 NVIDIA Corporation
+Copyright (c) 2005-2025 NVIDIA Corporation
+Copyright (c) 2005-2025 NVIDIA Corporation
+Cuda compilation tools, release 12.8, V12.8.93
+Cuda compilation tools, release 12.8, V12.8.93
+Cuda compilation tools, release 12.8, V12.8.93
+Cuda compilation tools, release 12.8, V12.8.93
+Cuda compilation tools, release 12.8, V12.8.93
+Cuda compilation tools, release 12.8, V12.8.93
+Cuda compilation tools, release 12.8, V12.8.93
+Framework              Model  Training seed  Test accuracy
+GPU: Tesla T4
+GPU: Tesla T4
+GPU: Tesla T4
+N      CPU(ms)        Kernel(ms)     Transfer(ms)   EndToEnd(ms)     Speedup    MaxAbsErr     
+Profiling run N=1024 complete (GPU-only, no CPU reference computed). kernel=1668.14 ms, transfer=3.28554 ms
+Profiling run N=1024 complete (GPU-only, no CPU reference computed). kernel=6532 ms, transfer=3.56211 ms
+Profiling target: N=1024, grid=(64,64,1), block=(16,16,1), total threads=1048576
+Profiling target: N=1024, grid=(64,64,1), block=(16,16,1), total threads=1048576
+TensorFlow           Baseline                     28                 0.495434             0.365190               0.496095
+TensorFlow           Baseline            0.730994               0.005064
+TensorFlow           Baseline           2046       0.728070
+TensorFlow           Baseline           2047       0.736842
+TensorFlow           Baseline           2048       0.728070
+TensorFlow Modified (HP_ID 0)                     20                 0.500264             0.415456               0.501729
+TensorFlow Modified (HP_ID 0)            0.751462               0.013399
+TensorFlow Modified (HP_ID 0)           2046       0.763158
+TensorFlow Modified (HP_ID 0)           2047       0.736842
+TensorFlow Modified (HP_ID 0)           2048       0.754386
+Tue Sep  1 04:34:18 2026       
+Tue Sep  1 04:36:12 2026       
+Tue Sep  1 04:38:30 2026       
+Tue Sep  1 04:38:38 2026       
+Tue Sep  1 04:39:24 2026       
+Tue Sep  1 04:39:30 2026       
+Tue Sep  1 04:48:50 2026       
+Wrote cuda_metrics.csv
+[2026-09-01T04:34:18.487245+00:00] [CUDA SECTION START] SID4=2046 SEED=2046
+[2026-09-01T04:34:18.684839+00:00] [CUDA SECTION] $ nvidia-smi
+[2026-09-01T04:34:18.703248+00:00] [CUDA SECTION] $ nvcc --version
+[2026-09-01T04:34:45.636074+00:00] [CUDA SECTION] $ nvcc -O3 -std=c++17 -Xcompiler -fopenmp -lineinfo matrix_mul.cu -o matrix_mul
+[2026-09-01T04:35:58.937769+00:00] [CUDA SECTION] $ nvcc -O3 -std=c++17 -Xcompiler -fopenmp -lineinfo matrix_mul.cu -o matrix_mul
+[2026-09-01T04:36:12.799231+00:00] [CUDA SECTION START] SID4=2046 SEED=2046
+[2026-09-01T04:36:12.995781+00:00] [CUDA SECTION] $ nvidia-smi
+[2026-09-01T04:36:12.998087+00:00] [CUDA SECTION] $ nvcc --version
+[2026-09-01T04:36:13.030652+00:00] [CUDA SECTION] $ nvcc -O3 -std=c++17 -Xcompiler -fopenmp -lineinfo matrix_mul.cu -o matrix_mul
+[2026-09-01T04:36:44.255567+00:00] [CUDA SECTION] $ ncu --set basic ./matrix_mul --profile 1024
+[2026-09-01T04:36:44.256088+00:00] [CUDA SECTION] Profiler selected: Nsight Compute
+[2026-09-01T04:36:51.793533+00:00] [CUDA SECTION] $ ncu --set full --export hw1_ncu -f ./matrix_mul --profile 1024
+[2026-09-01T04:38:30.212904+00:00] [CUDA SECTION START] SID4=2046 SEED=2046
+[2026-09-01T04:38:30.408289+00:00] [CUDA SECTION] $ nvidia-smi
+[2026-09-01T04:38:30.410919+00:00] [CUDA SECTION] $ nvcc --version
+[2026-09-01T04:38:38.336068+00:00] [CUDA SECTION START] SID4=2046 SEED=2046
+[2026-09-01T04:38:38.533958+00:00] [CUDA SECTION] $ nvidia-smi
+[2026-09-01T04:38:38.536773+00:00] [CUDA SECTION] $ nvcc --version
+[2026-09-01T04:39:16.753275+00:00] [CUDA SECTION] $ nvcc -O3 -std=c++17 -Xcompiler -fopenmp -lineinfo matrix_mul.cu -o matrix_mul
+[2026-09-01T04:39:24.311203+00:00] [CUDA SECTION START] SID4=2046 SEED=2046
+[2026-09-01T04:39:24.507320+00:00] [CUDA SECTION] $ nvidia-smi
+[2026-09-01T04:39:24.510038+00:00] [CUDA SECTION] $ nvcc --version
+[2026-09-01T04:39:27.216915+00:00] [CUDA SECTION] $ nvcc -O3 -std=c++17 -Xcompiler -fopenmp -lineinfo matrix_mul.cu -o matrix_mul
+[2026-09-01T04:39:30.597808+00:00] [CUDA SECTION START] SID4=2046 SEED=2046
+[2026-09-01T04:39:30.839759+00:00] [CUDA SECTION] $ nvidia-smi
+[2026-09-01T04:39:30.842845+00:00] [CUDA SECTION] $ nvcc --version
+[2026-09-01T04:39:37.217731+00:00] [CUDA SECTION] $ nvcc -O3 -std=c++17 -Xcompiler -fopenmp -lineinfo matrix_mul.cu -o matrix_mul
+[2026-09-01T04:48:50.389477+00:00] [CUDA SECTION START] SID4=2046 SEED=2046
+[2026-09-01T04:48:50.609002+00:00] [CUDA SECTION] $ nvidia-smi
+[2026-09-01T04:48:50.611477+00:00] [CUDA SECTION] $ nvcc --version
+[2026-09-01T04:48:55.678183+00:00] [CUDA SECTION] $ nvcc -O3 -std=c++17 -Xcompiler -fopenmp -lineinfo matrix_mul.cu -o matrix_mul
+[2026-09-01T04:50:09.260858+00:00] [CUDA SECTION] $ ./matrix_mul 256 1024 4096
+[2026-09-01T04:50:16.849866+00:00] [CUDA SECTION] $ ncu --set basic ./matrix_mul --profile 1024
+[2026-09-01T04:50:16.850431+00:00] [CUDA SECTION] Profiler selected: Nsight Compute
+[2026-09-01T04:50:33.357185+00:00] [CUDA SECTION] $ ncu --set full --export hw1_ncu -f ./matrix_mul --profile 1024
+[2026-09-01T04:50:34.347620+00:00] [CUDA SECTION] $ ncu --import hw1_ncu.ncu-rep
+[2026-09-01T04:50:34.368940+00:00] [CUDA SECTION] Crossover analysis: The smallest tested matrix size with an end-to-end GPU benefit was 256, with measured speedup 14.53. At that size the parallel arithmetic was already large enough to outweigh transfer and launch overhead. The crossover is not at size zero because GPU work has fixed setup, launch, synchronization, and transfer costs that a near-zero-size problem cannot amortize.
+[2026-09-01T04:50:34.378423+00:00] [CUDA SECTION END] All CUDA verification checks passed.
+[2026-09-01T05:09:05.626737+00:00] [NEURAL NETWORK SECTION START] Python 3.13.15 | NumPy 2.1.3 | pandas 2.2.3 | PyTorch 2.11.0+cu128 | TensorFlow 2.20.0
+[2026-09-01T05:09:05.732119+00:00] [NEURAL NETWORK SECTION] Loaded dataset from /content/sample_data/diabetes.csv, shape=(759, 9)
+[2026-09-01T05:09:06.525849+00:00] [NEURAL NETWORK SECTION] Saved figures/correlation_matrix.png
+[2026-09-01T05:09:09.485487+00:00] [NEURAL NETWORK SECTION] Saved figures/feature_distributions.png
+[2026-09-01T05:09:09.625172+00:00] [NEURAL NETWORK SECTION] Split sizes: train=531, val=114, test=114
+[2026-09-01T05:09:19.151256+00:00] [NEURAL NETWORK SECTION] PyTorch runs:
+[2026-09-01T05:10:02.823850+00:00] [NEURAL NETWORK SECTION] TensorFlow runs:
+[2026-09-01T05:10:02.862641+00:00] [NEURAL NETWORK SECTION] Summary:
+[2026-09-01T05:10:02.878537+00:00] [NEURAL NETWORK SECTION] Loss diagnostics (seed 2046 runs):
+[2026-09-01T05:10:03.843467+00:00] [NEURAL NETWORK SECTION] Saved pytorch_loss_curves.png, tensorflow_loss_curves.png, loss_histories.json
+[2026-09-01T05:10:03.861535+00:00] [NEURAL NETWORK SECTION END] All verification checks passed.
+[7739] matrix_mul@127.0.0.1
+[7811] matrix_mul@127.0.0.1
+cc1plus: fatal error: matrix_mul.cu: No such file or directory
+cc1plus: fatal error: matrix_mul.cu: No such file or directory
+cc1plus: fatal error: matrix_mul.cu: No such file or directory
+compilation terminated.
+compilation terminated.
+compilation terminated.
+nvcc warning : Support for offline compilation for architectures prior to '<compute/sm/lto>_75' will be removed in a future release (Use -Wno-deprecated-gpu-targets to suppress warning).
+nvcc warning : Support for offline compilation for architectures prior to '<compute/sm/lto>_75' will be removed in a future release (Use -Wno-deprecated-gpu-targets to suppress warning).
+nvcc warning : Support for offline compilation for architectures prior to '<compute/sm/lto>_75' will be removed in a future release (Use -Wno-deprecated-gpu-targets to suppress warning).
+nvcc warning : Support for offline compilation for architectures prior to '<compute/sm/lto>_75' will be removed in a future release (Use -Wno-deprecated-gpu-targets to suppress warning).
+nvcc warning : Support for offline compilation for architectures prior to '<compute/sm/lto>_75' will be removed in a future release (Use -Wno-deprecated-gpu-targets to suppress warning).
+nvcc warning : Support for offline compilation for architectures prior to '<compute/sm/lto>_75' will be removed in a future release (Use -Wno-deprecated-gpu-targets to suppress warning).
+nvcc warning : Support for offline compilation for architectures prior to '<compute/sm/lto>_75' will be removed in a future release (Use -Wno-deprecated-gpu-targets to suppress warning).
+nvcc: NVIDIA (R) Cuda compiler driver
+nvcc: NVIDIA (R) Cuda compiler driver
+nvcc: NVIDIA (R) Cuda compiler driver
+nvcc: NVIDIA (R) Cuda compiler driver
+nvcc: NVIDIA (R) Cuda compiler driver
+nvcc: NVIDIA (R) Cuda compiler driver
+nvcc: NVIDIA (R) Cuda compiler driver
+|                                         |                        |                  N/A |
+|                                         |                        |                  N/A |
+|                                         |                        |                  N/A |
+|                                         |                        |                  N/A |
+|                                         |                        |                  N/A |
+|                                         |                        |                  N/A |
+|                                         |                        |                  N/A |
+|                                         |                        |               MIG M. |
+|                                         |                        |               MIG M. |
+|                                         |                        |               MIG M. |
+|                                         |                        |               MIG M. |
+|                                         |                        |               MIG M. |
+|                                         |                        |               MIG M. |
+|                                         |                        |               MIG M. |
+|        ID   ID                                                               Usage      |
+|        ID   ID                                                               Usage      |
+|        ID   ID                                                               Usage      |
+|        ID   ID                                                               Usage      |
+|        ID   ID                                                               Usage      |
+|        ID   ID                                                               Usage      |
+|        ID   ID                                                               Usage      |
+|   0  Tesla T4                       Off |   00000000:00:04.0 Off |                    0 |
+|   0  Tesla T4                       Off |   00000000:00:04.0 Off |                    0 |
+|   0  Tesla T4                       Off |   00000000:00:04.0 Off |                    0 |
+|   0  Tesla T4                       Off |   00000000:00:04.0 Off |                    0 |
+|   0  Tesla T4                       Off |   00000000:00:04.0 Off |                    0 |
+|   0  Tesla T4                       Off |   00000000:00:04.0 Off |                    0 |
+|   0  Tesla T4                       Off |   00000000:00:04.0 Off |                    0 |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|  No running processes found                                                             |
+|  No running processes found                                                             |
+|  No running processes found                                                             |
+|  No running processes found                                                             |
+|  No running processes found                                                             |
+|  No running processes found                                                             |
+|  No running processes found                                                             |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| N/A   45C    P8             12W /   70W |       0MiB /  15360MiB |      0%      Default |
+| N/A   46C    P8             12W /   70W |       0MiB /  15360MiB |      0%      Default |
+| N/A   46C    P8             12W /   70W |       0MiB /  15360MiB |      0%      Default |
+| N/A   47C    P8             12W /   70W |       0MiB /  15360MiB |      0%      Default |
+| N/A   47C    P8             12W /   70W |       0MiB /  15360MiB |      0%      Default |
+| N/A   48C    P8             16W /   70W |       0MiB /  15360MiB |      0%      Default |
+| N/A   66C    P8             13W /   70W |       0MiB /  15360MiB |      0%      Default |
+| NVIDIA-SMI 580.82.07              Driver Version: 580.82.07      CUDA Version: 13.0     |
+| NVIDIA-SMI 580.82.07              Driver Version: 580.82.07      CUDA Version: 13.0     |
+| NVIDIA-SMI 580.82.07              Driver Version: 580.82.07      CUDA Version: 13.0     |
+| NVIDIA-SMI 580.82.07              Driver Version: 580.82.07      CUDA Version: 13.0     |
+| NVIDIA-SMI 580.82.07              Driver Version: 580.82.07      CUDA Version: 13.0     |
+| NVIDIA-SMI 580.82.07              Driver Version: 580.82.07      CUDA Version: 13.0     |
+| NVIDIA-SMI 580.82.07              Driver Version: 580.82.07      CUDA Version: 13.0     |
+| Processes:                                                                              |
+| Processes:                                                                              |
+| Processes:                                                                              |
+| Processes:                                                                              |
+| Processes:                                                                              |
+| Processes:                                                                              |
+| Processes:                                                                              |
+|=========================================+========================+======================|
+|=========================================+========================+======================|
+|=========================================+========================+======================|
+|=========================================+========================+======================|
+|=========================================+========================+======================|
+|=========================================+========================+======================|
+|=========================================+========================+======================|
+|=========================================================================================|
+|=========================================================================================|
+|=========================================================================================|
+|=========================================================================================|
+|=========================================================================================|
+|=========================================================================================|
+|=========================================================================================|
