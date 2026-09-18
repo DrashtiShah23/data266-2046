@@ -1,0 +1,42 @@
+HW3 RUN LOG
+
+SID4: 2046
+SEED: 2046
+SLICE: 46
+HP_ID: 0
+CLS_A: 6
+CLS_B: 3
+
+Notebook executed successfully in Google Colab.
+
+Prompt engineering results:
+Zero Shot average output length: 98.0 words
+Few Shot average output length: 23.5 words
+Chain of Thought average output length: 130.0 words
+Zero Shot CoT average output length: 187.0 words
+Meta Prompting average output length: 413.5 words
+Tree of Thoughts average output length: 325.0 words
+
+Self attention dataset:
+Total tokens: 46
+Unique tokens: 40
+Next token training pairs: 45
+
+Unmasked model:
+Initial loss: 3.701041
+Final loss: 0.228414
+Minimum loss: 0.227368
+Total future attention: 13.463081
+
+Causal masked model:
+Initial loss: 3.714020
+Final loss: 0.217287
+Minimum loss: 0.190088
+Maximum future attention: 0.0
+Total future attention: 0.0
+
+Attention row sum error:
+Unmasked: approximately 2.38e-7
+Masked: approximately 2.38e-7
+
+No runtime errors were present in the final executed notebook.
