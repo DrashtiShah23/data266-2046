@@ -1,0 +1,12 @@
+{
+    "gpu_uuid": "GPU-f5d856a9-82a5-d9c5-668c-dfc0c6c17517",
+    "gpu_name": "NVIDIA GeForce RTX 5090",
+    "driver_version": "610.60",
+    "cuda_runtime": "13.2",
+    "vram_mb": 32607.0,
+    "power_limit_w": 575.0,
+    "architecture": "Blackwell",
+    "memory_type": "GDDR7",
+    "memory_bandwidth_gb_s": 1792.0,
+    "tensor_core_generation": "5th Generation"
+}

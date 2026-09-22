@@ -1,0 +1,8 @@
+Measurement,Your GPU,Notes
+Peak achieved TFLOPS BF16,219.04620628971344,"N=16384, UUID=GPU-f5d856a9-82a5-d9c5-668c-dfc0c6c17517"
+% of theoretical peak BF16,52.27833085673351,Theoretical=419.0 TFLOPS
+Effective bandwidth GB/s,1502.2592589564472,83.83% of specification
+Naive attention largest success,117248,Smallest failure=117504
+Fused attention largest success,524288,Smallest failure=None
+Steady state / peak throughput,90.78917842034457,Percent
+Throttle onset,none,seconds

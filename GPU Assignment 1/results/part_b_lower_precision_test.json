@@ -1,0 +1,7 @@
+{
+    "gpu_uuid": "GPU-f5d856a9-82a5-d9c5-668c-dfc0c6c17517",
+    "gpu_name": "NVIDIA GeForce RTX 5090",
+    "attempted": true,
+    "available": false,
+    "message": "FP8 attempt failed with: NotImplementedError: \"addmm_cuda\" not implemented for 'Float8_e4m3fn'"
+}

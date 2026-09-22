@@ -1,0 +1,43 @@
+HW2.5 GPU Assignment Run Log
+GPU UUID: GPU-f5d856a9-82a5-d9c5-668c-dfc0c6c17517
+GPU Name: NVIDIA GeForce RTX 5090
+Driver: 610.60
+CUDA Runtime: 13.2
+
+PART B
+UUID=GPU-f5d856a9-82a5-d9c5-668c-dfc0c6c17517 N=1024 precision=FP32 median_ms=0.067136 TFLOPS=31.9871 percent_peak=30.52
+UUID=GPU-f5d856a9-82a5-d9c5-668c-dfc0c6c17517 N=4096 precision=FP32 median_ms=2.112096 TFLOPS=65.0723 percent_peak=62.09
+UUID=GPU-f5d856a9-82a5-d9c5-668c-dfc0c6c17517 N=8192 precision=FP32 median_ms=16.584144 TFLOPS=66.2990 percent_peak=63.26
+UUID=GPU-f5d856a9-82a5-d9c5-668c-dfc0c6c17517 N=16384 precision=FP32 median_ms=133.488098 TFLOPS=65.8942 percent_peak=62.88
+UUID=GPU-f5d856a9-82a5-d9c5-668c-dfc0c6c17517 N=1024 precision=TF32 median_ms=0.117696 TFLOPS=18.2460 percent_peak=8.71
+UUID=GPU-f5d856a9-82a5-d9c5-668c-dfc0c6c17517 N=4096 precision=TF32 median_ms=1.382592 TFLOPS=99.4067 percent_peak=47.45
+UUID=GPU-f5d856a9-82a5-d9c5-668c-dfc0c6c17517 N=8192 precision=TF32 median_ms=9.770976 TFLOPS=112.5283 percent_peak=53.71
+UUID=GPU-f5d856a9-82a5-d9c5-668c-dfc0c6c17517 N=16384 precision=TF32 median_ms=78.203011 TFLOPS=112.4777 percent_peak=53.69
+UUID=GPU-f5d856a9-82a5-d9c5-668c-dfc0c6c17517 N=1024 precision=FP16 median_ms=0.037872 TFLOPS=56.7037 percent_peak=13.53
+UUID=GPU-f5d856a9-82a5-d9c5-668c-dfc0c6c17517 N=4096 precision=FP16 median_ms=0.669200 TFLOPS=205.3780 percent_peak=49.02
+UUID=GPU-f5d856a9-82a5-d9c5-668c-dfc0c6c17517 N=8192 precision=FP16 median_ms=5.135584 TFLOPS=214.0967 percent_peak=51.10
+UUID=GPU-f5d856a9-82a5-d9c5-668c-dfc0c6c17517 N=16384 precision=FP16 median_ms=40.833967 TFLOPS=215.4112 percent_peak=51.41
+UUID=GPU-f5d856a9-82a5-d9c5-668c-dfc0c6c17517 N=1024 precision=BF16 median_ms=0.034096 TFLOPS=62.9835 percent_peak=15.03
+UUID=GPU-f5d856a9-82a5-d9c5-668c-dfc0c6c17517 N=4096 precision=BF16 median_ms=0.680976 TFLOPS=201.8264 percent_peak=48.17
+UUID=GPU-f5d856a9-82a5-d9c5-668c-dfc0c6c17517 N=8192 precision=BF16 median_ms=5.063200 TFLOPS=217.1575 percent_peak=51.83
+UUID=GPU-f5d856a9-82a5-d9c5-668c-dfc0c6c17517 N=16384 precision=BF16 median_ms=40.156336 TFLOPS=219.0462 percent_peak=52.28
+
+PART C
+UUID=GPU-f5d856a9-82a5-d9c5-668c-dfc0c6c17517 effective_bandwidth_gb_s=1502.2593
+
+PART D
+UUID=GPU-f5d856a9-82a5-d9c5-668c-dfc0c6c17517 sequence_length=512 naive_ms=0.5872800052165985 fused_ms=0.05129599943757057 speedup=11.448846141137057
+UUID=GPU-f5d856a9-82a5-d9c5-668c-dfc0c6c17517 sequence_length=1024 naive_ms=0.17536000162363052 fused_ms=0.10500799864530563 speedup=1.669968039443917
+UUID=GPU-f5d856a9-82a5-d9c5-668c-dfc0c6c17517 sequence_length=2048 naive_ms=0.17979200184345245 fused_ms=0.12132799997925758 speedup=1.481867350275204
+UUID=GPU-f5d856a9-82a5-d9c5-668c-dfc0c6c17517 sequence_length=4096 naive_ms=0.22918400168418884 fused_ms=0.20679999887943268 speedup=1.1082398594102816
+UUID=GPU-f5d856a9-82a5-d9c5-668c-dfc0c6c17517 sequence_length=8192 naive_ms=1.1622560024261475 fused_ms=0.3749440014362335 speedup=3.09981223322441
+UUID=GPU-f5d856a9-82a5-d9c5-668c-dfc0c6c17517 sequence_length=16384 naive_ms=4.634432077407837 fused_ms=0.9825759828090668 speedup=4.716614448644014
+
+Naive OOM boundary: {'largest_success': 117248, 'smallest_failure': 117504}
+Fused OOM boundary: {'largest_success': 524288, 'smallest_failure': None}
+
+PART E
+Peak first 30 seconds TFLOPS: 230.36262296928606
+Final 5 minute mean TFLOPS: 209.14433278137076
+Steady state percent peak: 90.78917842034457
+Throttle onset seconds: None

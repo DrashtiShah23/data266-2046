@@ -1,0 +1,8 @@
+{
+    "gpu_uuid": "GPU-f5d856a9-82a5-d9c5-668c-dfc0c6c17517",
+    "gpu_name": "NVIDIA GeForce RTX 5090",
+    "reservation_start": "12:00pm",
+    "reservation_end": "2:00pm",
+    "reserved_gpu_hours": "2 hours",
+    "actual_gpu_hours_used": "3 hours"
+}
