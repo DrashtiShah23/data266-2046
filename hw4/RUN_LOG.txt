@@ -1,0 +1,96 @@
+HW4 RUN LOG
+============
+
+Assignment: Building a Mini GPT from Scratch
+Framework: PyTorch
+Task: Character level next character prediction on Shakespeare.txt
+
+ENVIRONMENT
+-----------
+Device selected by notebook: CPU in the recorded run
+Sequence length: 128
+Vocabulary size: 65
+Corpus size: 1,115,394 characters
+Random seed: 42
+
+MODEL CONFIGURATION
+-------------------
+Hidden dimension: 128
+Attention heads: 4
+Head dimension: 32
+Decoder blocks: 2
+Feedforward dimension: 512
+Total parameters: 835,777
+
+The attention module was implemented manually using separate query, key, and value projections. No nn.Transformer, nn.MultiheadAttention, or Hugging Face Transformer model was used.
+
+CAUSAL MASK CHECK
+-----------------
+Total attention weight on future positions: 0.0
+Result: PASSED
+
+TRAINING CONFIGURATION
+----------------------
+Optimizer: Adam
+Learning rate: 0.0003
+Epochs: 5
+Batch size: 32 in recorded CPU run
+Samples per epoch: 8,000
+Batches per epoch: 250
+Gradient clipping: max norm 1.0
+
+TRAINING RESULTS
+----------------
+Epoch 1/5 | loss 2.6183
+Epoch 2/5 | loss 2.3091
+Epoch 3/5 | loss 2.2014
+Epoch 4/5 | loss 2.1374
+Epoch 5/5 | loss 2.0882
+
+Loss decreased by 0.5301 from the first to the final epoch.
+The loss curve was saved as training_loss.png.
+A model checkpoint was saved as gpt_shakespeare_checkpoint.pt.
+
+GENERATION TESTS
+----------------
+Prompt used for every decoding test: ROMEO:
+Generated characters per method: 300
+
+1. Greedy decoding
+   Unique bigram ratio: 0.138
+   Behavior: deterministic and locally coherent, but quickly became repetitive.
+
+2. Temperature 0.5
+   Unique bigram ratio: 0.145
+   Behavior: similar to greedy with only small variations.
+
+3. Temperature 1.0
+   Unique bigram ratio: 0.412
+   Behavior: more varied and still reasonably readable.
+
+4. Temperature 1.5
+   Unique bigram ratio: 0.681
+   Behavior: most diverse output, but with more misspellings and malformed words.
+
+5. Top k with k = 5
+   Unique bigram ratio: 0.141
+   Behavior: conservative and repetitive.
+
+6. Top k with k = 20
+   Unique bigram ratio: 0.387
+   Behavior: increased variation while keeping sampling limited to relatively likely characters.
+
+FINAL CHECK
+-----------
+Required tokenization: complete
+Two decoded input target examples: complete
+Manual multi head causal attention: complete
+At least 4 heads: complete
+At least 2 decoder blocks: complete
+Parameter and architecture printout: complete
+5 to 8 training epochs: complete
+Training loss plot: complete
+Greedy decoding: complete
+Three temperature values: complete
+Two top k values: complete
+Short decoding analysis: complete
