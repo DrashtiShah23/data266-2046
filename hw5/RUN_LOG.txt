@@ -1,0 +1,53 @@
+DialogSum LoRA HW5 Consolidated Run Log
+
+SID4: 2046
+SEED: 2046
+SLICE: 46
+HP_ID: 0
+CLS_A: 6
+CLS_B: 3
+
+Base model: google/flan-t5-small
+Training examples: 1000
+Validation examples: 100
+Epochs: 2
+Batch size: 4
+Learning rate: 0.0002
+LoRA alpha: 16
+LoRA dropout: 0.05
+Target modules: q, v
+
+RANK 4
+Trainable parameters: 172032
+Total parameters: 77133184
+Epoch 1 training loss: 1.826498
+Epoch 1 validation loss: 1.453372
+Epoch 2 training loss: 1.624805
+Epoch 2 validation loss: 1.439975
+Training time seconds: 80.71
+
+RANK 16
+Trainable parameters: 688128
+Total parameters: 77649280
+Epoch 1 training loss: 1.8194
+Epoch 1 validation loss: 1.4559
+Epoch 2 training loss: 1.612953
+Epoch 2 validation loss: 1.441840
+Training time seconds: 68.46
+
+DECODING STRATEGY, 10 FIXED TEST EXAMPLES
+Greedy: ROUGE1 0.2515, ROUGE2 0.0273, ROUGE L 0.1866
+Beam: ROUGE1 0.2817, ROUGE2 0.0839, ROUGE L 0.2132
+Sampling: ROUGE1 0.3053, ROUGE2 0.0927, ROUGE L 0.2285
+
+TEMPERATURE, SAMPLING WITH TOP P 0.9
+0.3: ROUGE1 0.2637, ROUGE2 0.0423, ROUGE L 0.2181
+0.5: ROUGE1 0.2853, ROUGE2 0.0718, ROUGE L 0.2057
+0.7: ROUGE1 0.3053, ROUGE2 0.0927, ROUGE L 0.2285
+1.0: ROUGE1 0.2690, ROUGE2 0.0680, ROUGE L 0.2095
+
+Training procedure:
+Run HW5.ipynb top to bottom in the configured Colab GPU environment.
+The notebook contains the exact manual PyTorch LoRA training loop used for both ranks and saves adapters to:
+saved_adapters/dialogsum_r4
+saved_adapters/dialogsum_r16
