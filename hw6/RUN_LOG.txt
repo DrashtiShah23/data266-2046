@@ -1,0 +1,131 @@
+HW6 STL10 Self Supervised and Contrastive Representation Learning
+Consolidated run log from the executed notebook
+
+PERSONAL PARAMETERS
+SID4: 2046
+SEED: 2046
+SLICE: 46
+HP_ID: 0
+CLS_A: 6
+CLS_B: 3
+
+PART A: SUPERVISED RESNET18
+
+Epoch 01/12 | loss=2.2179 | train_acc=20.80%
+Epoch 02/12 | loss=1.9523 | train_acc=28.00%
+Epoch 03/12 | loss=1.7701 | train_acc=32.80%
+Epoch 04/12 | loss=1.4591 | train_acc=45.20%
+Epoch 05/12 | loss=1.3794 | train_acc=50.20%
+Epoch 06/12 | loss=1.2625 | train_acc=53.60%
+Epoch 07/12 | loss=1.1458 | train_acc=60.80%
+Epoch 08/12 | loss=1.0290 | train_acc=64.00%
+Epoch 09/12 | loss=0.9866 | train_acc=67.80%
+Epoch 10/12 | loss=0.8550 | train_acc=71.80%
+Epoch 11/12 | loss=0.8171 | train_acc=72.40%
+Epoch 12/12 | loss=0.7544 | train_acc=75.40%
+
+Training time: 11.11 seconds
+Test loss: 1.5480
+Test accuracy: 44.40%
+Checkpoint: checkpoints/supervised_resnet18.pt
+
+PART B: ROTATION SSL
+
+Rotation epoch 01/15 | loss=0.9341 | accuracy=61.32%
+Rotation epoch 02/15 | loss=0.7271 | accuracy=71.11%
+Rotation epoch 03/15 | loss=0.6287 | accuracy=75.49%
+Rotation epoch 04/15 | loss=0.5532 | accuracy=78.54%
+Rotation epoch 05/15 | loss=0.4841 | accuracy=81.52%
+Rotation epoch 06/15 | loss=0.4136 | accuracy=84.47%
+Rotation epoch 07/15 | loss=0.3349 | accuracy=87.50%
+Rotation epoch 08/15 | loss=0.2434 | accuracy=91.07%
+Rotation epoch 09/15 | loss=0.1401 | accuracy=94.97%
+Rotation epoch 10/15 | loss=0.0695 | accuracy=97.58%
+Rotation epoch 11/15 | loss=0.0263 | accuracy=99.17%
+Rotation epoch 12/15 | loss=0.0079 | accuracy=99.79%
+Rotation epoch 13/15 | loss=0.0018 | accuracy=99.98%
+Rotation epoch 14/15 | loss=0.0008 | accuracy=100.00%
+Rotation epoch 15/15 | loss=0.0006 | accuracy=100.00%
+
+Rotation pretraining time: 1218.26 seconds
+Linear evaluation freeze check: 0 trainable encoder parameters
+Trainable linear classifier parameters: 5130
+Linear evaluation epochs: 20
+Linear training time: 11.26 seconds
+Test loss: 2.0612
+Test accuracy: 28.86%
+Checkpoints:
+checkpoints/rotation_resnet18.pt
+checkpoints/rotation_linear_classifier.pt
+
+PART C: SIMCLR
+
+Unlabeled subset: 20000
+Augmentations:
+RandomResizedCrop
+RandomHorizontalFlip
+ColorJitter
+RandomGrayscale
+Temperature tau: 0.2
+Projection dimension: 128
+
+SimCLR epoch 01/15 | loss=4.6858
+SimCLR epoch 02/15 | loss=3.5662
+SimCLR epoch 03/15 | loss=2.9675
+SimCLR epoch 04/15 | loss=2.7361
+SimCLR epoch 05/15 | loss=2.6058
+SimCLR epoch 06/15 | loss=2.5166
+SimCLR epoch 07/15 | loss=2.4492
+SimCLR epoch 08/15 | loss=2.3872
+SimCLR epoch 09/15 | loss=2.3579
+SimCLR epoch 10/15 | loss=2.3094
+SimCLR epoch 11/15 | loss=2.2758
+SimCLR epoch 12/15 | loss=2.2376
+SimCLR epoch 13/15 | loss=2.2196
+SimCLR epoch 14/15 | loss=2.2134
+SimCLR epoch 15/15 | loss=2.2024
+
+SimCLR pretraining time: 1270.80 seconds
+Linear evaluation freeze check: 0 trainable encoder parameters
+Trainable linear classifier parameters: 5130
+Linear evaluation epochs: 20
+Linear training time: 11.23 seconds
+Test loss: 1.4622
+Test accuracy: 47.43%
+Checkpoints:
+checkpoints/simclr_encoder.pt
+checkpoints/simclr_linear_classifier.pt
+
+PART D: NEAREST NEIGHBOR ANALYSIS
+
+Query indices:
+3383 cat
+2661 dog
+2013 horse
+
+Cosine similarity in normalized 512 dimensional embedding space
+Top 5 neighbors per query
+
+Supervised top 5 same class match rate: 40.00%
+Rotation SSL top 5 same class match rate: 26.67%
+SimCLR top 5 same class match rate: 6.67%
+
+Supervised query matches:
+cat 1/5
+dog 1/5
+horse 4/5
+
+Rotation SSL query matches:
+cat 1/5
+dog 0/5
+horse 3/5
+
+SimCLR query matches:
+cat 0/5
+dog 0/5
+horse 1/5
+
+Saved figures:
+figures/nearest_neighbors_query1.png
+figures/nearest_neighbors_query2.png
+figures/nearest_neighbors_query3.png
