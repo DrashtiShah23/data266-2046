@@ -1,0 +1,72 @@
+DATA266 HW7 RUN LOG
+
+Run artifact generation UTC: 2026-10-20T21:37:57.171270+00:00
+
+SID4: 2046
+SEED: 2046
+SLICE: 46
+HP_ID: 0
+CLS_A: 6 (Shirt)
+CLS_B: 3 (Dress)
+
+Python: 3.13.16
+PyTorch: 2.11.0+cpu
+Platform: Linux-6.6.122+-x86_64-with-glibc2.39
+Device: cpu
+
+Dataset: FashionMNIST
+Training examples: 54000
+Validation examples: 6000
+Test examples: 10000
+Input dimension: 784
+Batch size: 256
+
+FC AUTOENCODER
+Latent dimension: 32
+Optimizer: Adam
+Learning rate: 0.001
+Epochs: 15
+Training objective: Mean Squared Error
+Common test MSE: 0.012584
+Common test RMSE: 0.112177
+
+VARIATIONAL AUTOENCODER
+Latent dimension: 32
+Optimizer: Adam
+Learning rate: 0.001
+Epochs: 15
+Training objective: BCE reconstruction + KL divergence
+Common test MSE: 0.016428
+Common test RMSE: 0.128171
+Test total VAE loss: 244.774
+Test reconstruction BCE: 232.075
+Test KL divergence: 12.699
+
+FOCUS CLASS RESULTS
+
+Shirt (6)
+FC AE mean MSE: 0.012350
+VAE mean MSE: 0.015830
+FC AE median MSE: 0.009588
+VAE median MSE: 0.012589
+
+Dress (3)
+FC AE mean MSE: 0.011551
+VAE mean MSE: 0.015666
+FC AE median MSE: 0.009450
+VAE median MSE: 0.013641
+
+IMPLEMENTATION CHECKS
+
+Personal parameters verified.
+FashionMNIST dataset sizes verified.
+FC Autoencoder input and reconstruction shapes verified.
+VAE latent mean and log variance shapes verified.
+VAE reconstruction shape verified.
+Both models evaluated over all 10000 test images.
+Common reconstruction MSE used for model comparison.
+VAE latent mean used for deterministic reconstruction evaluation.
+Training and validation losses remained finite.
+Highest error reconstructions inspected for both models.
+
+Run completed successfully.
