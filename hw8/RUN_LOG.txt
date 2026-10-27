@@ -1,6 +1,6 @@
 Homework 8 Run Log
 
-Experiment 1: DDPM Training
+Experiment 1: Baseline DDPM Training
 
 Dataset: MNIST
 Diffusion steps: 100
@@ -10,15 +10,81 @@ Epochs: 50
 Optimizer: Adam
 Learning rate: 0.001
 Loss: MSE
+Trainable parameters: 82,945
 Device: NVIDIA Tesla T4
 
-Result:
+Results:
 Initial loss = 0.156066
 Final loss = 0.062526
 Best loss = 0.062490 at epoch 48
 Loss reduction = 59.94%
-Average epoch time = 12.71 seconds
 Total training time = 635.28 seconds
 
-Status:
-Training completed successfully. The noise prediction loss decreased substantially and stabilized near 0.06 during the final epochs. The trained model will next be evaluated using DDPM reverse sampling.
+Evaluation:
+The baseline model achieved a low noise prediction loss, but 100 step DDPM sampling produced overlapping and poorly structured digit like strokes. The training objective was therefore not sufficient by itself to establish generation quality.
+
+Decision:
+Increase the effective receptive field of the noise prediction network using downsampling, upsampling, and skip connections.
+
+
+Experiment 2: Improved DDPM Training
+
+Architecture:
+Encoder and decoder style convolutional network with timestep conditioning and skip connections.
+
+Trainable parameters: 517,665
+
+A five epoch sanity run was performed before completing full training.
+
+Sanity run:
+Epoch 1 loss = 0.181950
+Epoch 5 loss = 0.076367
+Sanity training time = 72.35 seconds
+
+The model was then continued through epoch 50.
+
+Results:
+Initial epoch loss = 0.181950
+Final epoch loss = 0.060271
+Best loss = 0.060216 at epoch 45
+Loss reduction = 66.88%
+Total training time = 714.68 seconds
+
+Evaluation:
+The improved model produced more coherent and spatially localized digit like structures than the baseline, although some generated samples remained distorted or ambiguous.
+
+Decision:
+Use the improved model for the final DDPM and DDIM comparison.
+
+
+Experiment 3: DDPM Sampling
+
+Sampler: DDPM
+Sampling steps: 100
+Number of generated samples: 16
+Sampling time = 0.2366 seconds
+NaN values detected = False
+
+Result:
+The sampler completed successfully. Generated samples showed more coherent structures with the improved model than with the baseline model.
+
+
+Experiment 4: DDIM Sampling
+
+DDIM 50 steps:
+Sampling time = 0.1354 seconds
+Speedup over DDPM = 1.75x
+Time reduction = 42.77%
+
+DDIM 20 steps:
+Sampling time = 0.0499 seconds
+Speedup over DDPM = 4.74x
+Time reduction = 78.89%
+
+Result:
+Reducing the number of DDIM sampling steps substantially improved generation speed. The 50 step configuration retained more recognizable structure than the 20 step configuration, while the 20 step configuration provided the largest speed improvement.
+
+
+Final Observation
+
+The experiment demonstrates that noise prediction loss alone does not fully represent generative quality. The improved architecture produced better global structure, while DDIM demonstrated the expected computational advantage of generating samples using fewer reverse diffusion steps.
