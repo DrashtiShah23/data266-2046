@@ -1,0 +1,24 @@
+Homework 8 Run Log
+
+Experiment 1: DDPM Training
+
+Dataset: MNIST
+Diffusion steps: 100
+Beta schedule: linear from 0.0001 to 0.02
+Batch size: 128
+Epochs: 50
+Optimizer: Adam
+Learning rate: 0.001
+Loss: MSE
+Device: NVIDIA Tesla T4
+
+Result:
+Initial loss = 0.156066
+Final loss = 0.062526
+Best loss = 0.062490 at epoch 48
+Loss reduction = 59.94%
+Average epoch time = 12.71 seconds
+Total training time = 635.28 seconds
+
+Status:
+Training completed successfully. The noise prediction loss decreased substantially and stabilized near 0.06 during the final epochs. The trained model will next be evaluated using DDPM reverse sampling.
