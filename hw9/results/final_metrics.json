@@ -1,0 +1,35 @@
+{
+  "sid4": 2046,
+  "seed": 2046,
+  "gpu": "Tesla T4",
+  "dataset": "FashionMNIST",
+  "vae_model": "stabilityai/sd-vae-ft-mse",
+  "image_size": 128,
+  "latent_shape": [
+    4,
+    16,
+    16
+  ],
+  "latent_scaling_factor": 0.18215,
+  "vae_reconstruction_mse": 0.0007419202011078596,
+  "diffusion_timesteps": 1000,
+  "beta_start": 0.0001,
+  "beta_end": 0.02,
+  "unet_parameters": 6486852,
+  "base_channels": 64,
+  "channel_multipliers": [
+    1,
+    2,
+    4
+  ],
+  "label_drop_probability": 0.1,
+  "training_epochs": 50,
+  "learning_rate": 2e-05,
+  "initial_training_loss": 0.40818275731404624,
+  "best_epoch": 50,
+  "best_loss": 0.09997120491266251,
+  "final_training_loss": 0.09997120491266251,
+  "training_seconds": 1738.1947121809999,
+  "guidance_scale": 7.5,
+  "generated_samples": 64
+}

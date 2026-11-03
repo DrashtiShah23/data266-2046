@@ -1,0 +1,19 @@
+{
+  "vae_model": "stabilityai/sd-vae-ft-mse",
+  "latent_scaling_factor": 0.18215,
+  "input_shape": [
+    64,
+    3,
+    128,
+    128
+  ],
+  "latent_shape": [
+    64,
+    4,
+    16,
+    16
+  ],
+  "reconstruction_mse": 0.0007419202011078596,
+  "latent_mean": -0.04999128356575966,
+  "latent_std": 1.2648751735687256
+}
