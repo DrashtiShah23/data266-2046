@@ -1,0 +1,48 @@
+{
+  "student_constants": {
+    "SID4": 2046,
+    "SEED": 2046,
+    "SLICE": 46,
+    "HP_ID": 0,
+    "CLS_A": 6,
+    "CLS_B": 3
+  },
+  "dataset": {
+    "name": "cardiffnlp/tweet_eval",
+    "configuration": "sentiment",
+    "source_start": 46,
+    "source_end": 5045,
+    "rows": 5000,
+    "train_rows": 3500,
+    "validation_rows": 750,
+    "test_rows": 750
+  },
+  "hardware": {
+    "gpu": "NVIDIA GeForce RTX 5090",
+    "gpu_memory_gib": 31.842
+  },
+  "baseline": {
+    "batch_size": 16,
+    "epochs": 4,
+    "learning_rate": 2e-05,
+    "weight_decay": 0.01,
+    "best_epoch": 3,
+    "best_val_accuracy": 0.6666666666666666,
+    "best_val_loss": 0.9417916994094848,
+    "peak_memory_gb": 2.477545738220215,
+    "training_seconds": 49.511319230000026
+  },
+  "part_a": {
+    "largest_successful_batch": 256,
+    "batch_512": "interrupted after failing to complete within practical measurement window"
+  },
+  "part_b": {
+    "recommended_configuration": "mixed precision plus gradient checkpointing"
+  },
+  "part_c": "Part C skipped (optional)",
+  "part_d": {
+    "maximum_successfully_tested_context_batch_8": 1984,
+    "configured_max_model_len": 2048
+  },
+  "gpu_hours": 0.013753144230555563
+}
