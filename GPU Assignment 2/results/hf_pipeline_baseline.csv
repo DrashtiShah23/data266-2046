@@ -1,0 +1,2 @@
+configuration,batch_size,tokens_per_second,p50_latency_ms,p95_latency_ms,total_seconds
+"HF pipeline, batch 1",1,75.31482768145543,599.7923109999874,874.96836635014,20.394390418000057
