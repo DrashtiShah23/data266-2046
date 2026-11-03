@@ -1,0 +1,11 @@
+{
+  "batch_size": 16,
+  "epochs": 4,
+  "learning_rate": 2e-05,
+  "weight_decay": 0.01,
+  "best_epoch": 3,
+  "best_val_accuracy": 0.6666666666666666,
+  "best_val_loss": 0.9417916994094848,
+  "peak_memory_gb": 2.477545738220215,
+  "training_seconds": 49.511319230000026
+}

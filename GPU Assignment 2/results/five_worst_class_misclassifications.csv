@@ -1,0 +1,6 @@
+example,text,true_class,predicted_class,diagnosis
+1,it's July 45 and there is still no news of the new Frank Ocean album,negative,neutral,"Model confused this with neutral; inspect ambiguity, negation, sarcasm, or limited tweet context."
+2,"""By Joe Hemba DAMATURU, Nigeria, July 10 (Reuters) - Boko Haram islamist militants attacked the northern Nigerian town of Buni Yadi in Yobe""",negative,neutral,"Model confused this with neutral; inspect ambiguity, negation, sarcasm, or limited tweet context."
+3,it's August 15 and Frank Ocean still hasn't dropped an album,negative,neutral,"Model confused this with neutral; inspect ambiguity, negation, sarcasm, or limited tweet context."
+4,WTH Apple? 1st I go to the apple and there is less then 10 employees working\u002c I have to wait 10 mins to check out. Wake up Tim Cook!!!,negative,neutral,"Model confused this with neutral; inspect ambiguity, negation, sarcasm, or limited tweet context."
+5,"""The Bucks' John Henson is hit at the knee by a falling Ilyasova. Doesn't look good. He goes to the locker room. Bulls up 85-75, end of 3rd.""",negative,neutral,"Model confused this with neutral; inspect ambiguity, negation, sarcasm, or limited tweet context."

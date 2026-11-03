@@ -1,0 +1,20 @@
+{
+  "sid4": 2046,
+  "seed": 2046,
+  "slice": 46,
+  "hp_id": 0,
+  "cls_a": 6,
+  "cls_b": 3,
+  "python": "3.11.13",
+  "torch": "2.7.1+cu128",
+  "cuda_available": true,
+  "cuda_version": "12.8",
+  "gpu_count": 1,
+  "gpus": [
+    {
+      "index": 0,
+      "name": "NVIDIA GeForce RTX 5090",
+      "total_memory_gb": 31.842
+    }
+  ]
+}
