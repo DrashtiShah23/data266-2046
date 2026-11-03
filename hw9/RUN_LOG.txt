@@ -1,0 +1,51 @@
+HW9 RUN LOG
+
+SID4: 2046
+Seed: 2046
+
+Hardware
+GPU: Tesla T4
+
+Dataset
+FashionMNIST
+Training images: 60000
+Test images: 10000
+Input resolution: 128 x 128
+
+VAE
+Model: stabilityai/sd-vae-ft-mse
+Scaling factor: 0.18215
+Latent dimensions: 4 x 16 x 16
+Reconstruction MSE: 0.00074192
+
+Diffusion
+Timesteps: 1000
+Linear beta schedule: 0.0001 to 0.02
+
+Denoiser
+Conditional latent U Net
+Parameters: 6486852
+Base channels: 64
+Channel multipliers: 1, 2, 4
+Classifier free dropout probability: 0.1
+
+Training
+Epochs completed: 50
+Learning rate: 2e-05
+Best epoch: 50
+Best loss: 0.09997120
+Training seconds: 1738.195
+
+Sampling
+Guidance scale: 7.5
+Samples generated: 64
+Conditional classes: 0 through 9 repeated
+
+Artifacts
+figures/vae_reconstructions.png
+figures/latent_forward_diffusion.png
+figures/training_loss.png
+figures/conditional_samples.png
+results/vae_metrics.json
+results/training_history.csv
+results/final_metrics.json
