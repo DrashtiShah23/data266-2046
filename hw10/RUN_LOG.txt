@@ -1,0 +1,61 @@
+HW10 RUN LOG
+
+Dataset
+ccdv/arxiv-summarization
+
+Split
+train
+
+Documents
+first 100
+
+Document field
+article
+
+Chunking strategies
+fixed word 200 words with 40 word overlap
+sentence aware approximately 200 words with 2 sentence overlap
+
+Embedding model
+sentence-transformers/all-MiniLM-L6-v2
+
+Vector database
+ChromaDB
+
+Vector retrieval
+top 5
+
+Reranker
+cross-encoder/ms-marco-MiniLM-L-6-v2
+
+Reranking candidates
+15
+
+Evaluation queries
+5
+
+Metrics
+Precision@5
+Recall@5
+MRR
+
+Conversational memory
+Previous user query is retained and prepended to a dependent follow up query.
+
+Best baseline chunking strategy
+sentence aware
+
+Fixed word baseline Precision@5
+0.920
+
+Fixed word reranked Precision@5
+1.000
+
+Sentence aware baseline Precision@5
+1.000
+
+Memory Precision@5 without context
+0.600
+
+Memory Precision@5 with context
+1.000
