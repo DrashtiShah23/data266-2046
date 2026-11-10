@@ -1,0 +1,3 @@
+strategy,num_chunks,mean_words,median_words,min_words,max_words
+fixed_word,4094,198.19565217391303,200.0,46,200
+sentence_aware,4993,186.6865611856599,188.0,14,1840

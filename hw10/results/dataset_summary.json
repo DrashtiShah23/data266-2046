@@ -1,0 +1,16 @@
+{
+  "dataset": "ccdv/arxiv-summarization",
+  "split": "train",
+  "documents_used": 100,
+  "document_field": "article",
+  "reference_summary_field": "abstract",
+  "fixed_word_chunks": 4094,
+  "sentence_aware_chunks": 4993,
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_dimension": 384,
+  "vector_database": "ChromaDB",
+  "top_k": 5,
+  "reranker": "cross-encoder/ms-marco-MiniLM-L-6-v2",
+  "reranking_candidate_k": 15,
+  "evaluation_queries": 5
+}

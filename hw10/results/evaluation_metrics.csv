@@ -1,0 +1,5 @@
+strategy,method,precision_at_5,recall_at_5,mrr
+fixed_word,with_reranking,1.0,1.0,1.0
+fixed_word,without_reranking,0.9199999999999999,1.0,1.0
+sentence_aware,with_reranking,1.0,1.0,1.0
+sentence_aware,without_reranking,1.0,1.0,1.0
