@@ -1,0 +1,18 @@
+{
+  "seed": 2046,
+  "dataset": "CIFAR10",
+  "clip_model": "openai/clip-vit-base-patch32",
+  "device": "cuda",
+  "caption": "a photo of an airplane flying in the sky",
+  "similarity_images": 1000,
+  "similarity_images_per_class": 100,
+  "highest_similarity_class": "airplane",
+  "highest_class_mean_similarity": 0.24897181242704391,
+  "zero_shot_test_images": 10000,
+  "overall_zero_shot_accuracy": 0.888,
+  "best_class": "automobile",
+  "best_class_accuracy": 0.976,
+  "worst_class": "deer",
+  "worst_class_accuracy": 0.765,
+  "zero_shot_runtime_seconds": 49.36366102000011
+}
