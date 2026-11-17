@@ -1,0 +1,48 @@
+HW11 RUN LOG
+
+Seed
+2046
+
+Dataset
+CIFAR 10
+
+CLIP model
+openai/clip-vit-base-patch32
+
+Similarity experiment
+100 images from each of 10 classes
+1000 images total
+
+Caption
+a photo of an airplane flying in the sky
+
+Highest mean similarity class
+airplane
+
+Highest class mean similarity
+0.248972
+
+Zero shot classification
+Full CIFAR 10 test split
+10000 images
+
+Prompt template
+a photo of a {class}
+
+Overall accuracy
+0.8880
+
+Best class
+automobile
+
+Best class accuracy
+0.9760
+
+Worst class
+deer
+
+Worst class accuracy
+0.7650
+
+Runtime seconds
+49.36
