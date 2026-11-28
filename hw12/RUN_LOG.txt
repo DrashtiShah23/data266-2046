@@ -1,0 +1,120 @@
+HW12 RUN LOG
+
+Generated: 2026-11-28T07:58:39.050900
+
+SID4: 2046
+SEED: 2046
+Hardware: Tesla T4
+
+PART 1
+
+Base model:
+Qwen/Qwen3-0.6B
+Revision:
+c1899de289a04d12100db370d81485cdf75e47ca
+
+Base WikiText2 perplexity:
+20.0273
+
+Base p50 latency:
+1323.85 ms
+
+Base p95 latency:
+1732.72 ms
+
+Base peak GPU memory:
+1.123 GB
+
+Base disk size:
+1147.81 MB
+
+GPTQ:
+4 bit
+Calibration dataset: WikiText2
+
+GPTQ WikiText2 perplexity:
+24.0744
+
+GPTQ p50 latency:
+3234.89 ms
+
+GPTQ p95 latency:
+6273.59 ms
+
+GPTQ peak GPU memory:
+0.528 GB
+
+GPTQ disk size:
+527.17 MB
+
+PART 2
+
+Teacher:
+BertForSequenceClassification
+109485316 parameters
+
+Student:
+DistilBertForSequenceClassification
+66956548 parameters
+
+AG News training samples:
+120000
+
+AG News test samples:
+7600
+
+Teacher logits shape:
+120000 x 4
+
+Temperature sweep:
+T1 accuracy 0.941842
+T2 accuracy 0.941579
+T5 accuracy 0.941447
+T10 accuracy 0.942105
+
+Best temperature:
+10
+
+Alpha sweep:
+alpha 0.25 accuracy 0.944342
+alpha 0.50 accuracy 0.942105
+alpha 0.75 accuracy 0.939474
+
+Best alpha:
+0.25
+
+Teacher final accuracy:
+0.944605
+
+Best student final accuracy:
+0.944342
+
+Teacher p50:
+12.63 ms
+
+Teacher p95:
+26.17 ms
+
+Student p50:
+5.92 ms
+
+Student p95:
+7.26 ms
+
+Teacher individual peak GPU memory:
+0.414 GB
+
+Student individual peak GPU memory:
+0.256 GB
+
+Teacher disk size:
+418.58 MB
+
+Student disk size:
+256.11 MB
+
+Largest degraded class:
+Sci Tech
+
+Teacher correct and student wrong examples in Sci Tech:
+55
